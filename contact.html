@@ -22,50 +22,42 @@
          padding : 10px 20px; border :  none; border-radius : 4px; cursor : pointer;
       }
       button:hover { 
-         background-color : #3e8e41;
+         background-color : #7fa280;
       }
    </style>
 </head> 
 <body>
    <h1> Contact Us </h1>
-   <form method = "post" action = "contact.php" >
-      <label for = "name" > Name: </label>
-      <input type = "text" name = "name" id = "name" required>
-      <label for = "email" > Email: </label>
-      <input type = "email" name = "email" id = "email" required>
-      <label for = "message" > Message: </label>
-      <textarea name = "message" id = "message" required></textarea>
-      <button type = ”submit” name = ”submit”> Submit </buton>
-   </form>
-   <script>
-      $(document).ready(function() {
-    $('.myform').on('submit',function(){
-         
-        // Add text 'loading...' right after clicking on the submit button. 
-        $('.output_message').text('Loading...'); 
-         
-        var form = $(this);
-        $.ajax({
-            url: form.attr('action'),
-            method: form.attr('method'),
-            data: form.serialize(),
-            success: function(result){
-                if (result == 'success'){
-                    $('.output_message').text('Message Sent!');  
-                } else {
-                    $('.output_message').text('Error Sending email!');
-                }
-            }
-        });
-         
-        // Prevents default submission of the form after clicking on the submit button. 
-        return false;   
-    });
-});
-   </script>
+   <form role="form" id="contactForm" class="contact-form" data-toggle="validator" class="shake">
+      <div class="form-group">
+        <div class="controls">
+          <input type="text" id="name" class="form-control" placeholder="Name" required data-error="Please enter your name">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <input type="email" class="email form-control" id="email" placeholder="Email" required data-error="Please enter your email">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required data-error="Please enter your message subject">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <textarea id="message" rows="7" placeholder="Massage" class="form-control" required data-error="Write your message"></textarea>
+          <div class="help-block with-errors"></div>
+        </div>  
+      </div>
+    
+      <button type="submit" id="submit" class="btn btn-effect"><i class="fa fa-check"></i> Send Message</button>
+      <div id="msgSubmit" class="h3 text-center hidden"></div> 
+      <div class="clearfix"></div>   
+    
+    </form>     
 </body>
-   
 </html>
-
-
-   
