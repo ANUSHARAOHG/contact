@@ -23,7 +23,7 @@ if (isset($_POST['firstname'])) {
     $content = chunk_split(base64_encode($content));
     $uid = md5(uniqid(time()));
     $name = basename($image_name);
-    $replyto = $from_mail = 'reviewgaming2017@gmail.com';
+    $replyto = $from_mail = 'anusharaohg98@gmail.com';
     // header
     $header = "From: ".$firstname." <".$from_mail.">\r\n";
     $header .= "Reply-To: ".$replyto."\r\n";
@@ -41,7 +41,7 @@ if (isset($_POST['firstname'])) {
     $nmessage .= "--".$uid."--";
     try {
         $subject = 'The email was sent from contact form.';
-        mail("bestearnmoney87@gmail.com", $subject, $nmessage, $header);
+        mail("anusharaohg98@gmail.com", $subject, $nmessage, $header);
         echo json_encode(
             [
                 'massage' => 'Thank for your contacts',
